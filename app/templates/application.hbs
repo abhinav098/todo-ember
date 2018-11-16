@@ -1,5 +1,18 @@
-{{!-- The following component displays Ember's default welcome message. --}}
-{{welcome-page}}
-{{!-- Feel free to remove this! --}}
-
+<h1>Todo App</h1>
+{{input type= "text" id="new-todo" placeholder="What needs to be done????" value= newTitle}}
+<button {{action 'createTodo'}} disabled={{enableSubmit}}>Submit Todo</button>
+<ul>
+  {{#each model as |todo|}}
+    <div>
+      <li>
+        {{todo.title}}
+        {{#if todo.completed}}
+          - Completed
+        {{/if}}
+      </li>
+      <button {{action 'markComplete' todo}}>Mark Complete</button>
+    </div>
+    {{else}} None Found
+  {{/each}}
+</ul>
 {{outlet}}
