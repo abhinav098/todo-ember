@@ -1,0 +1,9 @@
+<h1>Show Page</h1>
+<p><b>Todo#{{model.id}}</b>: {{model.title}}</p>
+<h3>Comments: </h3>
+{{input type="text" placeholder="Comment here!" value=newComment}}
+<button {{action 'createComment' model.id}}>Comment</button>
+{{#each model.comments as |comment|}}
+  <p>{{comment.body}} --- <span><button {{action 'removeComment' comment}}>Remove</button></span></p>
+{{/each}}
+{{outlet}}
